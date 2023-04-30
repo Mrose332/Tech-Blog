@@ -7,7 +7,7 @@ const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 
-const sequelize = require("./config/connection");
+const sequelize = require('./connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Sets up the Express App
@@ -31,7 +31,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(require("./controllers/home-routes"));
+app.use(require('./controllers/homeRoutes'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
